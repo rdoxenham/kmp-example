@@ -9,9 +9,9 @@ Steps to produce your own module based on this repo:
 
 2. You'll need the kernel module Makefile, the source, and any headers required.
 
-3. Test with `make -C /lib/modules/`uname -r`/build M=`pwd` modules`
+3. Test with `make -C /lib/modules/``uname -r``/build M=``pwd`` modules`
 
-4. Clean up with `make -C /lib/modules/`uname -r`/build M=`pwd` clean`
+4. Clean up with `make -C /lib/modules/``uname -r``/build M=``pwd`` clean`
 
 5. Create a tarball of your source directory, and create a spec file (see at25.spec as an example).
 
