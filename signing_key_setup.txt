@@ -1,0 +1,26 @@
+Creating a Signing Key
+======================
+
+NOTE: These are only used for testing, please create "proper" certificates for production usage, and keep them safe!
+
+1. First create an x509.genkey setup to define the type of key we need:
+
+echo -e "[ req ] \n\
+default_bits = 4096 \n\
+distinguished_name = req_distinguished_name \n\
+prompt = no \n\
+x509_extensions = myexts \n\
+
+[ req_distinguished_name ] \n\
+CN = Modules \n\
+\n\
+[ myexts ] \n\
+basicConstraints=critical,CA:FALSE \n\
+keyUsage=digitalSignature \n\
+subjectKeyIdentifier=hash \n\
+authorityKeyIdentifier=keyid" > x509.genkey
+
+
+2. Then create the certificates based on these:
+
+openssl req -new -nodes -utf8 -sha512 -days 36500 -batch -x509 -config x509.genkey -outform DER -out signing_key.x509 -keyout signing_key.priv
